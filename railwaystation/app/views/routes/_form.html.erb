@@ -6,6 +6,11 @@
       <%= f.text_field :name %>
     </div>
 
+    <div class="field">
+      <%= f.label :route, "Список поездов" %>
+      <%= f.collection_select :id, Train.all, :id, :number %>
+    </div>
+
     <div class="actions">
       <%= f.submit "#{ @route.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>

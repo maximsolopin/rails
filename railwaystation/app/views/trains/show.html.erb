@@ -13,5 +13,61 @@
   <% end %>
 </p>
 
+<p>
+    <strong>Кол-во вагонов:</strong><br>
+
+    <strong>Купейных:</strong>
+    <%= @train.wagons.select{|wagon| wagon[:wagon_type] == "Купейный" }.size  %><br>
+
+    <% if !@train.wagons.empty? %>
+        <% count_compartments_bottom_seats = 0 %>
+        <% count_compartments_top_seats = 0 %>
+        <% count_reserved_bottom_seats = 0 %>
+        <% count_reserved_top_seats = 0 %>
+          <% @train.wagons.each do |wagon| %>
+            <% if wagon[:wagon_type] == "Купейный" %>
+                <% count_compartments_bottom_seats += wagon[:bottom_seats_count] %>
+                <% count_compartments_top_seats += wagon[:top_seats_count] %>
+            <% else %>
+                <% count_reserved_bottom_seats += wagon[:bottom_seats_count] %>
+                <% count_reserved_top_seats += wagon[:top_seats_count] %>
+            <% end %>
+          <% end %>
+    <% end %>
+
+    <strong>Кол-во верхних мест:</strong>
+    <%= count_compartments_top_seats %> <br>
+    <strong>Кол-во нижних мест:</strong>
+    <%= count_compartments_bottom_seats %> <br>
+
+    <strong>Плацкартных:</strong>
+    <%= @train.wagons.select{|wagon| wagon[:wagon_type] == "Плацкартный" }.size  %><br>
+
+    <strong>Кол-во верхних мест:</strong>
+    <%= count_reserved_top_seats %> <br>
+    <strong>Кол-во нижних мест:</strong>
+    <%= count_reserved_bottom_seats %> <br>
+</p>
+
+
+
+<!-- @train.wagons.select{|wagon| wagon[:wagon_type] = "Плацкартный" }.size
+ -->
+<!-- При просмотре поезда, также должна отображаться информация:
+О кол-ве вагонов:
+Плацкартных
+Купейных
+и кол-ве мест:
+Плацкартных верхних/нижних
+Купейных верхних/нижних. -->
+<!--
+Купейный
+Плацкартный
+ -->
+<!--
+
+      t.integer :top_seats_count
+      t.integer :bottom_seats_count
+ -->
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
