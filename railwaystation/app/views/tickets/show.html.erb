@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>ФИО:</strong>
+  <%= @ticket.fio %>
+</p>
+
+<p>
+  <strong>Начальная станция:</strong>
+  <%= RailwayStation.find(@ticket.arrival_statition).title %>
+</p>
+
+<p>
+  <strong>Конечная станция:</strong>
+  <%= RailwayStation.find(@ticket.departure_statition).title %>
+</p>
+
+<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
+<%= link_to 'Назад', tickets_path %>
