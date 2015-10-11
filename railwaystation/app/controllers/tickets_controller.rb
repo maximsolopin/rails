@@ -6,6 +6,7 @@ class TicketsController < ApplicationController
     end
 
     def show
+
     end
 
     def new
@@ -23,6 +24,7 @@ class TicketsController < ApplicationController
     end
 
     def edit
+        @railway_station_all = RailwayStation.all
     end
 
     def update
@@ -36,6 +38,10 @@ class TicketsController < ApplicationController
     def destroy
         @ticket.destroy
         redirect_to tickets_path
+    end
+
+    def railway_station_all
+        @railway_station_all = RailwayStation.all
     end
 
     private
