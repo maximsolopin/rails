@@ -1,9 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Number:</strong>
+  <strong>Номер:</strong>
   <%= @train.number %>
 </p>
+<p>
+  <strong>Маршрут:</strong>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    Маршрут не назначен
+  <% end %>
+</p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<p>
+    <strong>Кол-во вагонов:</strong><br>
+
+    <strong>Купейных:</strong>
+    <%= @train.compartment_wagon_count %><br>
+
+    <% count_compartments_bottom_seats, count_compartments_top_seats, count_reserved_bottom_seats, count_reserved_top_seats = @train.count_seats %>
+
+    <strong>Кол-во верхних мест:</strong>
+    <%= count_compartments_top_seats %> <br>
+    <strong>Кол-во нижних мест:</strong>
+    <%= count_compartments_bottom_seats %> <br>
+
+    <strong>Плацкартных:</strong>
+    <%= @train.econom_wagon_count %><br>
+
+    <strong>Кол-во верхних мест:</strong>
+    <%= count_reserved_top_seats %> <br>
+    <strong>Кол-во нижних мест:</strong>
+    <%= count_reserved_bottom_seats %> <br>
+</p>
+
+<%= link_to 'Редактировать', edit_train_path(@train) %> |
+<%= link_to 'Назад', trains_path %>

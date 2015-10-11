@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Список станций</h1>
+<h1>Список вагонов</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Название</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @railway_stations %>
+    <%= render @wagons %>
   </tbody>
-
 </table>
 
 <br>
 
-<%= link_to 'Новая станция', new_railway_station_path %>
+<%= link_to 'Добавить вагон', new_wagon_path %>
 <%= link_to 'Главное меню', root_path %>
