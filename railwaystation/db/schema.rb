@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007170835) do
+ActiveRecord::Schema.define(version: 20151018182843) do
 
   create_table "railway_stations", force: :cascade do |t|
     t.string   "title"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151007170835) do
   create_table "railway_stations_routes", force: :cascade do |t|
     t.integer "railway_station_id"
     t.integer "route_id"
+    t.integer "position"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20151007170835) do
     t.datetime "updated_at",             null: false
     t.integer  "train_id"
     t.integer  "user_id"
+    t.string   "fio"
   end
 
   create_table "trains", force: :cascade do |t|
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151007170835) do
     t.datetime "updated_at",         null: false
     t.integer  "current_station_id"
     t.decimal  "route_id"
+    t.string   "sorting_order_flag"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,12 +56,15 @@ ActiveRecord::Schema.define(version: 20151007170835) do
   end
 
   create_table "wagons", force: :cascade do |t|
-    t.integer  "train_id"
     t.string   "wagon_type"
     t.integer  "top_seats_count"
     t.integer  "bottom_seats_count"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "number"
+    t.integer  "side_top_seats_count"
+    t.integer  "side_bottom_seats_count"
+    t.integer  "train_id"
   end
 
 end
