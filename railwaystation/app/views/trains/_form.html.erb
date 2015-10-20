@@ -11,7 +11,13 @@
       <%= f.collection_select :route_id, Route.all, :id, :name %>
     </div>
 
+    <div class="field">
+      <%= f.label :sorting_order_flag %><br>
+      <%= f.select(:sorting_order_flag, Train::TRAIN_SORT_TYPES) %>
+    </div>
+
     <div class="actions">
       <%= f.submit "#{ @train.new_record? ? 'Создать' : 'Изменить' }" %>
     </div>
+
 <% end %>
