@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Вагон №<%= @wagon.number %></h1>
+
 <p>
   <strong>Тип вагона:</strong>
   <%= @wagon.wagon_type %>
@@ -24,6 +26,15 @@
   <%= @wagon.bottom_seats_count %>
 </p>
 
+<p>
+  <strong>Кол-во верхних боковых мест:</strong>
+  <%= @wagon.side_top_seats_count %>
+</p>
+
+<p>
+  <strong>Кол-во нижних боковых мест:</strong>
+  <%= @wagon.side_bottom_seats_count %>
+</p>
 
 <%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
 <%= link_to 'Назад', wagons_path %>
