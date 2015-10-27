@@ -1,0 +1,52 @@
+<%= form_tag search_path, method: :get do %>
+    <h1>Поиск билета</h1>
+
+    <div class="field">
+      <%= label :user, "Пользователь: " %><br>
+      <%= select_tag :user,
+        options_from_collection_for_select(User.all, :id, :name) %>
+    </div>
+
+    <div class="field">
+      <%= label :departure_statition, "Начальная станция:" %>
+      <%= select_tag :departure_statition, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+    </div>
+
+    <div class="field">
+      <%= label :arrival_statition, "Конечная станция:" %>
+      <%= select_tag :arrival_statition, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+    </div>
+
+    <div class="actions">
+      <%= submit_tag "Поиск..." %>
+    </div>
+
+    <% if !@trains.present? %>
+        <p>Не найден билет</p>
+    <% else %>
+        <p>Найденные билеты:</p>
+        <center>
+        <table border="1" cellspacing="0" cellpadding="5">
+        </center>
+        <tr>
+        <th>Номер поезда</th>
+        <th>Начальная станция</th>
+        <th>Конечная станция</th>
+        <th>Время отправления</th>
+        <th>Время прибытия</th>
+        <th>Купить билет</th>
+        </tr>
+
+        <% @trains.each do |train| %>
+          <tr>
+          <td><center><%= train.number %></center></td>
+          <td><center><%= @departure_statition.title %></center></td>
+          <td><center><%= @arrival_statition.title %></center></td>
+          <td><center><%= 'не вышло' %></center></td>
+          <td><center><%= 'не вышло' %></center></td>
+          <td><%= link_to "Купить", new_user_ticket_path(params[:user], departure_statition: @departure_statition.id, arrival_statition: @arrival_statition.id, train: train.id) %></td>
+          </tr>
+        <% end %>
+        </table>
+    <% end %>
+<% end %>

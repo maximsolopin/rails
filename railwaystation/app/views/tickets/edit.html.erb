@@ -2,4 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Назад', tickets_path %>
+<%= link_to 'Билет', [@user, @ticket] %>
+<%= link_to 'Назад', user_tickets_path(@user) %>

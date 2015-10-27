@@ -7,6 +7,11 @@ class Route < ActiveRecord::Base
 
   before_validation :set_name
 
+  def self.find_stations(from, to)
+    routes = Route.joins(:railway_stations_routes).group("railway_stations_routes.route_id").having("count(distinct railway_stations_routes.railway_station_id) = 2")
+    routes.where(["railway_stations_routes.railway_station_id in (?, ?)", from, to]).map(&:id)
+  end
+
   private
 
   def set_name

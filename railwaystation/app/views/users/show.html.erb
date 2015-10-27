@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Имя:
+  <strong><%= @user.name %></strong>
+</p>
+<%= link_to 'Список билетов пользователя:', user_tickets_path(@user) %>
+<br><br>
+<table >
+  <thead>
+    <tr>
+      <td>№</td>
+      <td>Номер билета</td>
+      <td>Номер поезда</td>
+      <td>Отправление</td>
+      <td>Прибытие</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% number = 0 %>
+    <% @user.tickets.each do |ticket| %>
+      <tr>
+        <td><%= number %>.</td>
+        <td><%= ticket.number %></td>
+        <td><%= ticket.train %></td>
+        <td><%= ticket.departure_statition.title %></td>
+        <td><%= ticket.arrival_statition.title %></td>
+        <td><%= link_to 'Билет', user_ticket_path(@user, ticket) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Редактировать', edit_user_path(@user) %> |
+<%= link_to 'Назад к пользователям', users_path %>

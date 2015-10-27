@@ -36,4 +36,9 @@ class Train < ActiveRecord::Base
 
         return count_compartments_bottom_seats, count_compartments_top_seats, count_reserved_bottom_seats, count_reserved_top_seats
     end
+
+    def self.find_trains(routes)
+        Train.joins(:route).where("route_id in (?)", routes)
+    end
+
 end

@@ -1,20 +1,26 @@
-<%  %>
-<%= form_for(@ticket) do |f| %>
+<%= form_for [@user, @ticket] do |f| %>
     <%= render 'common/errors', resource: @ticket %>
 
     <div class="field">
-      <%= f.label :fio %><br>
-      <%= f.text_field :fio %>
+      <%= f.label :user_id, "Пользователь: " %><br>
+      <%= f.collection_select :user_id, User.all, :id, :name,
+        { selected: params[:user_id] } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :train_id, "Номер поезда: " %><br>
+      <%= f.collection_select :train_id, Train.all, :id, :number,
+        { selected: params[:train] } %>
     </div>
 
     <div class="field">
       <%= f.label :arrival_statition, "Начальная станция" %>
-      <%= f.collection_select :arrival_statition_id, @railway_station_all, :id, :title %>
+      <%= f.collection_select :arrival_statition_id, RailwayStation.all, :id, :title, { selected: params[:arrival_statition] } %>
     </div>
 
     <div class="field">
       <%= f.label :departure_statition, "Конечная станция" %>
-      <%= f.collection_select :departure_statition_id, @railway_station_all, :id, :title %>
+      <%= f.collection_select :departure_statition_id, RailwayStation.all, :id, :title, { selected: params[:departure_statition] }%>
     </div>
 
     <div class="actions">
