@@ -9,12 +9,12 @@
 
     <div class="field">
       <%= label :departure_statition, "Начальная станция:" %>
-      <%= select_tag :departure_statition, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+      <%= select_tag :departure_statition, options_from_collection_for_select(RailwayStation.all, :id, :title, params[:departure_statition]) %>
     </div>
 
     <div class="field">
       <%= label :arrival_statition, "Конечная станция:" %>
-      <%= select_tag :arrival_statition, options_from_collection_for_select(RailwayStation.all, :id, :title) %>
+      <%= select_tag :arrival_statition, options_from_collection_for_select(RailwayStation.all, :id, :title, params[:arrival_statition]) %>
     </div>
 
     <div class="actions">
@@ -49,4 +49,8 @@
         <% end %>
         </table>
     <% end %>
+
+<%= link_to 'Назад', search_path %>
+<%= link_to 'Главное меню', root_path %>
+
 <% end %>
