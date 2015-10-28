@@ -15,7 +15,7 @@ class Train < ActiveRecord::Base
     end
 
     def econom_wagon_count
-        self.wagons.select{|wagon| wagon.wagon_type == "Купейный" }.size
+        self.wagons.select{|wagon| wagon.wagon_type == "Плацкартный" }.size
     end
 
     def count_seats
@@ -38,6 +38,9 @@ class Train < ActiveRecord::Base
     end
 
     def self.find_trains(routes)
+        puts "123"
+        puts routes
+        puts "123"
         Train.joins(:route).where("route_id in (?)", routes)
     end
 

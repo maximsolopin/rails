@@ -15,5 +15,10 @@
   <%= @ticket.departure_statition.title %>
 </p>
 
+<p>
+  <strong>Номер поезда:</strong>
+  <%= @ticket.train.number %>
+</p>
+
 <%= link_to 'Редактировать', edit_user_ticket_path(@user, @ticket) %> |
 <%= link_to 'Назад', user_tickets_path(@user) %>

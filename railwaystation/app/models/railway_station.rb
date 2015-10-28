@@ -34,6 +34,8 @@ class RailwayStation < ActiveRecord::Base
     station_route(route).try(:departure_time)
   end
 
+
+
   protected
 
   def station_route(route)
