@@ -35,5 +35,23 @@
     <%= count_reserved_bottom_seats %> <br>
 </p>
 
+<p>
+  <strong>Вагоны</strong>
+  <ul>
+    <% @train.wagons.ordered(@train.sorting_order_flag).each do |wagon| %>
+        <li><%= link_to "Вагон №#{wagon.number}", wagon %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Флаг сортировки:</strong>
+  <%= @train.sorting_order_flag %>
+</p>
+
+<p>
+  <%= link_to "Добавить вагон", new_train_wagon_path(@train) %>
+</p>
+
 <%= link_to 'Редактировать', edit_train_path(@train) %> |
 <%= link_to 'Назад', trains_path %>
