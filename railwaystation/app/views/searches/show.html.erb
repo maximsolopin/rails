@@ -42,8 +42,8 @@
           <td><center><%= train.number %></center></td>
           <td><center><%= @departure_statition.title %></center></td>
           <td><center><%= @arrival_statition.title %></center></td>
-          <td><center><%= train.route.railway_stations.ordered.first.arrival_time_in(train.route) %></center></td>
-          <td><center><%= train.route.railway_stations.ordered.last.departure_time_in(train.route)  %></center></td>
+          <td><center><%= train.route_arrival_time %></center></td>
+          <td><center><%= train.route_departure_time  %></center></td>
           <td><%= link_to "Купить", new_user_ticket_path(params[:user], departure_statition: @departure_statition.id, arrival_statition: @arrival_statition.id, train_id: train.id) %></td>
           </tr>
         <% end %>

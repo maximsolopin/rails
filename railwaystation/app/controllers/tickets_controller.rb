@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
     before_action :set_ticket, only: [:show, :edit, :update, :destroy]
     before_action :set_user
+    before_action :railway_station_all
 
     def index
         @tickets = @user.tickets
@@ -25,7 +26,6 @@ class TicketsController < ApplicationController
     end
 
     def edit
-        @railway_station_all = RailwayStation.all
     end
 
     def update

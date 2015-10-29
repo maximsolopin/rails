@@ -3,12 +3,12 @@
 
     <div class="field">
       <%= f.label :user_id, "Пользователь: " %><br>
-      <%= f.collection_select :user_id, User.all, :id, :name, { selected: params[:user_id] } %>
+      <%= f.collection_select :user_id, User.all, :id, :name, { selected: @ticket.new_record? ? params[:user_id] : nil } %>
     </div>
 
     <div class="field">
       <%= f.label :train_id, "Номер поезда: " %><br>
-      <%= f.collection_select :train_id, Train.all, :id, :number, { selected: params[:train_id] } %>
+      <%= f.collection_select :train_id, Train.all, :id, :number, { selected: @ticket.new_record? ? params[:train_id] : nil } %>
     </div>
 
     <div class="field">

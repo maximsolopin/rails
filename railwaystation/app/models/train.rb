@@ -7,7 +7,7 @@ class Train < ActiveRecord::Base
     has_many :tickets
     has_many :wagons
 
-    # scope :ordered, -> (train, direction) { where(train: train).order("number #{direction}") }
+    #scope :ordered, -> (train, direction) { where(train: train).order("number #{direction}") }
 
 
     def compartment_wagon_count
@@ -38,10 +38,15 @@ class Train < ActiveRecord::Base
     end
 
     def self.find_trains(routes)
-        puts "123"
-        puts routes
-        puts "123"
         Train.joins(:route).where("route_id in (?)", routes)
+    end
+
+    def route_arrival_time
+        self.route.railway_stations.ordered.first.arrival_time_in(self.route)
+    end
+
+    def route_departure_time
+        self.route.railway_stations.ordered.first.departure_time_in(self.route)
     end
 
 end
