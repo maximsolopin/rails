@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>ФИО:</strong>
-  <%= @ticket.fio %>
+  <strong>Пользователь:</strong>
+  <%= @user.name %>
 </p>
 
 <p>
@@ -15,5 +15,10 @@
   <%= @ticket.departure_statition.title %>
 </p>
 
-<%= link_to 'Редактировать', edit_ticket_path(@ticket) %> |
-<%= link_to 'Назад', tickets_path %>
+<p>
+  <strong>Номер поезда:</strong>
+  <%= @ticket.train.number %>
+</p>
+
+<%= link_to 'Редактировать', edit_user_ticket_path(@user, @ticket) %> |
+<%= link_to 'Назад', user_tickets_path(@user) %>
