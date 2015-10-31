@@ -1,8 +1,16 @@
 <h1>Welcome, rails!</h1>
 
-<%= link_to 'Список станций', railway_stations_path %>
-<%= link_to 'Список маршрутов', routes_path %>
-<%= link_to 'Поезда', trains_path %>
-<%= link_to 'Вагоны', wagons_path %>
-<%= link_to 'Поиск',  search_path %>
-<%= link_to 'Пользователи',  users_path %>
+<%= link_to 'Список станций', admin_railway_stations_path %>
+<%= link_to 'Список маршрутов', admin_routes_path %>
+<%= link_to 'Поезда', admin_trains_path %>
+<%= link_to 'Вагоны', admin_wagons_path %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to 'Билеты', admin_tickets_path %>
+  <% else %>
+    <%= link_to 'Билеты', tickets_path %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Поиск', search_path %>

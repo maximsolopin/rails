@@ -2,12 +2,6 @@
     <h1>Поиск билета</h1>
 
     <div class="field">
-      <%= label :user, "Пользователь: " %><br>
-      <%= select_tag :user,
-        options_from_collection_for_select(User.all, :id, :name) %>
-    </div>
-
-    <div class="field">
       <%= label :departure_statition, "Начальная станция:" %>
       <%= select_tag :departure_statition, options_from_collection_for_select(RailwayStation.all, :id, :title, params[:departure_statition]) %>
     </div>
@@ -44,7 +38,7 @@
           <td><center><%= @arrival_statition.title %></center></td>
           <td><center><%= train.route_arrival_time %></center></td>
           <td><center><%= train.route_departure_time  %></center></td>
-          <td><%= link_to "Купить", new_user_ticket_path(params[:user], departure_statition: @departure_statition.id, arrival_statition: @arrival_statition.id, train_id: train.id) %></td>
+          <td><%= link_to "Купить", new_ticket_path(departure_statition: @departure_statition.id, arrival_statition: @arrival_statition.id, train_id: train.id) %></td>
           </tr>
         <% end %>
         </table>
