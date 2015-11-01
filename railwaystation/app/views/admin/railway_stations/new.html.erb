@@ -1,5 +1,13 @@
-<h1>Новая станция</h1>
+<div class="container">
+  <div class="text-center">
+    <h1><%= t('.title') %></h1>
+  </div>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
 
-<%= link_to 'Назад', admin_railway_stations_path %>
+<nav>
+  <ul class="pager">
+    <li><%= link_to t('common.back'), admin_railway_stations_path %></li>
+  </ul>
+</nav>

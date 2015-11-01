@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
     def show
+        @stations = RailwayStation.all
         if (params[:departure_statition] != nil)
             @departure_statition = RailwayStation.find(params[:departure_statition])
             @arrival_statition   = RailwayStation.find(params[:arrival_statition])

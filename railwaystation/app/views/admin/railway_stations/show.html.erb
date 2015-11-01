@@ -1,18 +1,28 @@
-<p>
-  <strong>Title:</strong>
-  <%= @railway_station.title %>
-</p>
+<div class="container">
+  <div class="text-center">
+    <h1><%= t('.title') %></h1>
+  </div>
 
-<% if @railway_station.routes.empty? %>
-    <p>Станция не входит ни в один маршрут</p>
-<% else %>
-    <p>Станция входит в следующие маршруты:</p>
-    <ul>
-      <% @railway_station.routes.each do |route| %>
-        <li><%= route.name %></li>
-      <% end %>
-    </ul>
-<% end %>
+  <p>
+    <strong><%= t('.p-title') %></strong>
+    <%= @railway_station.title %>
+  </p>
 
-<%= link_to 'Редактирование', edit_admin_railway_station_path(@railway_station) %> |
-<%= link_to 'Назад', admin_railway_stations_path %>
+  <% if @railway_station.routes.empty? %>
+      <p><%= t('.routes-empty') %></p>
+  <% else %>
+      <p><%= t('.routes') %></p>
+      <ul class="list-group">
+        <% @railway_station.routes.each do |route| %>
+          <li class="list-group-item"><%= route.name %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+
+<nav>
+  <ul class="pager">
+    <li><%= link_to t('common.edit'), edit_admin_railway_station_path(@railway_station) %></li>
+    <li><%= link_to t('common.back'), admin_railway_stations_path %></li>
+  </ul>
+</nav>
