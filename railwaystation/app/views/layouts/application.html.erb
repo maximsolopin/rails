@@ -55,11 +55,12 @@
                   <li><%= link_to "Список маршрутов", admin_routes_path %></li>
                   <li><%= link_to "Поезда", admin_trains_path %></li>
                   <li><%= link_to "Вагоны", admin_wagons_path %></li>
+                  <li><%= link_to 'Поиск', admin_search_path %></li>
                   <li><%= link_to "Билеты", admin_tickets_path %></li>
                 <% else %>
                   <li><%= link_to 'Билеты', tickets_path %></li>
+                  <li><%= link_to 'Поиск', search_path %></li>
                 <% end %>
-                <li><%= link_to 'Поиск', search_path %></li>
             <% else %>
                 <li><%= link_to "Войти", new_user_session_path  %></li>
             <% end %>

@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-    # validates :name, presence: true
 
-    has_many :tickets
+  validates :name, presence: true
+
+  has_many :tickets
+
+  scope :not_admin_users, -> { where(admin: false) }
+
 end

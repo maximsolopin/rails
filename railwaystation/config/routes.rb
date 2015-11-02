@@ -18,11 +18,12 @@ Rails.application.routes.draw do
     resources :wagons
     resources :tickets
     resources :routes
+    resource :search, only: [:new, :show, :edit, :create]
   end
 
   get 'welcome/index'
 
-  root 'searches#show'
+  root to: 'searches#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

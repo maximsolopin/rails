@@ -15,10 +15,11 @@ class Admin::TicketsController < Admin::BaseController
     end
 
     def create
-        @ticket = current_user.tickets.new(ticket_params)
+        @user = User.find(params[:user_id])
+        @ticket = @user.tickets.new(ticket_params)
 
         if @ticket.save
-            redirect_to [:admin, @ticket]
+            redirect_to [@user, @ticket]
         else
             render :new
         end
@@ -29,7 +30,7 @@ class Admin::TicketsController < Admin::BaseController
 
     def update
         if @ticket.update(ticket_params)
-            redirect_to [:admin, @ticket]
+            redirect_to [@user, @ticket]
         else
             render :new
         end
