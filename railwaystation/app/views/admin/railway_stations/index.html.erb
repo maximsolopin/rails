@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="text-center">
+    <h1><%= t('.title') %></h1>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('.th-title') %></th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @railway_stations %>
+    </tbody>
+
+  </table>
+</div>
+
+<nav>
+  <ul class="pager">
+    <li><%= link_to t('.new'), new_admin_railway_station_path %></li>
+    <li><%= link_to t('common.root'), root_path %></li>
+  </ul>
+</nav>

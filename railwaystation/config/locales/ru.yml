@@ -1,0 +1,53 @@
+ru:
+  common:
+    back: 'Назад'
+    root: 'Главное меню'
+    show: 'Показать'
+    edit: 'Редактировать'
+    confirm: 'Вы уверены?'
+    delete: 'Удалить'
+    errors: 'При заполнении формы возникли ошибки'
+  admin:
+    railway_stations:
+      new:
+        title: 'Новая станция'
+      index:
+        title: 'Список станций'
+        th-title: 'Название'
+        new:   'Новая станция'
+      edit:
+        title: 'Редактирование станции'
+      show:
+        title: 'Просмотр станции'
+        p-title: 'Название:'
+        routes-empty: 'Станция не входит ни в один маршрут'
+        routes: 'Станция входит в следующие маршруты:'
+      form:
+        submit: '%{action} станцию'
+    searches:
+      show:
+        title: 'Поиск билета'
+        ticket-found: 'Найденные билеты:'
+        ticket-not-found: 'Билет не найден'
+        th-train-number: 'Номер поезда'
+        th-departure-station: 'Начальная станция'
+        th-arrival-station: 'Конечная станция'
+        th-departure-time: 'Время отправления'
+        th-arrival-time: 'Время прибытия'
+        th-buy-ticket: 'Купить билет'
+        buy: 'Купить'
+        user: 'Пользователь'
+        find: 'Поиск'
+  searches:
+    show:
+      title: 'Поиск билета'
+      ticket-found: 'Найденные билеты:'
+      ticket-not-found: 'Билет не найден'
+      th-train-number: 'Номер поезда'
+      th-departure-station: 'Начальная станция'
+      th-arrival-station: 'Конечная станция'
+      th-departure-time: 'Время отправления'
+      th-arrival-time: 'Время прибытия'
+      th-buy-ticket: 'Купить билет'
+      buy: 'Купить'
+

@@ -1,0 +1,17 @@
+<%= form_for [:admin, @railway_station] do |f| %>
+  <%= render 'common/errors', resource: @railway_station %>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <%= f.label :title %>
+      <div class="input-group">
+        <%= f.text_field :title, class: 'form-control' %>
+        <span class="input-group-btn">
+          <%= f.submit t('.submit', action: @railway_station.new_record? ? 'Создать' : 'Изменить'), class: 'btn btn-default' %>
+        </span>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+

@@ -1,0 +1,22 @@
+<%= form_for [:admin, @ticket] do |f| %>
+    <%= render 'common/errors', resource: @ticket %>
+
+    <div class="field">
+      <%= f.label :train_id, "Номер поезда: " %><br>
+      <%= f.collection_select :train_id, Train.all, :id, :number, { selected: @ticket.new_record? ? params[:train_id] : @ticket.train_id } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :arrival_statition, "Начальная станция" %>
+      <%= f.collection_select :arrival_statition_id, @railway_station_all, :id, :title, { selected: @ticket.new_record? ? params[:arrival_statition] : @ticket.arrival_statition }  } %>
+    </div>
+
+    <div class="field">
+      <%= f.label :departure_statition, "Конечная станция" %>
+      <%= f.collection_select :departure_statition_id, @railway_station_all, :id, :title, { selected: @ticket.new_record? ? params[:departure_statition] : @ticket.departure_statition }%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "#{ @ticket.new_record? ? 'Создать' : 'Изменить' }" %>
+    </div>
+<% end %>
