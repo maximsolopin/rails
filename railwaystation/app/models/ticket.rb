@@ -5,6 +5,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :user
 
   after_create :send_notification
+  after_destroy :send_notification_remove
 
   def route_name
     "#{departure_statition.title} - #{arrival_statition.title}"
@@ -16,4 +17,7 @@ class Ticket < ActiveRecord::Base
     TicketsMailer.buy_ticket(self.user, self).deliver_now
   end
 
+  def send_notification_remove
+    TicketsMailer.remove_ticket(self.user, self).deliver_now
+  end
 end
