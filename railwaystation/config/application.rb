@@ -6,13 +6,14 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-MAILGUN_SMTP_PORT: 587
-MAILGUN_SMTP_SERVER: 'smtp.mailgun.org'
-MAILGUN_SMTP_LOGIN: 'postmaster@appf35974f530ea467eb72eed91b2fe9ff2.mailgun.org'
-MAILGUN_SMTP_PASSWORD: 'a6c5b9711a18dc56f243372405a30dcf'
-
 module Railwaystation
   class Application < Rails::Application
+
+    MAILGUN_SMTP_PORT: 587
+    MAILGUN_SMTP_SERVER: 'smtp.mailgun.org'
+    MAILGUN_SMTP_LOGIN: 'postmaster@appf35974f530ea467eb72eed91b2fe9ff2.mailgun.org'
+    MAILGUN_SMTP_PASSWORD: 'a6c5b9711a18dc56f243372405a30dcf'
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
